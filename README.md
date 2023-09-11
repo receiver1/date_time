@@ -10,7 +10,9 @@ std::cout << date_time{"2023-09-07T00:00:00Z", date_format::ISO_8601,
 You can add/sub seconds/minutes/hours/days via std::chrono:
 ```cpp
 using namespace std::chrono_literals;
-std::cout << date_time{"2023-09-07T00:00:00Z"} + 15min << std::endl;
+std::cout << (date_time{"2023-09-07T00:00:00Z"} + 15min)
+                 .format(date_format::ISO_8601)
+          << std::endl;
 ```
 
 All functions are documented in the code, you can figure it out yourself by looking at the .h file.
