@@ -16,3 +16,4 @@ std::cout << (date_time{"2023-09-07T00:00:00Z"} + 15min)
 ```
 
 All functions are documented in the code, you can figure it out yourself by looking at the .h file.
+If you find a problem or want to see a new feature, you can create an issue.
