@@ -76,6 +76,8 @@ class date_time {
    */
   date_time& set_time_zone(const time_zone& timezone);
 
+  date_time& operator+(std::chrono::seconds seconds);
+  date_time& operator-(std::chrono::seconds seconds);
   date_time& operator+=(std::chrono::seconds seconds);
   date_time& operator-=(std::chrono::seconds seconds);
   date_time& operator=(value_type timestamp);
