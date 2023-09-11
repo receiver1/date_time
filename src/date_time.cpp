@@ -102,7 +102,7 @@ std::string receiver::date_time::format(date_format standard,
 date_time receiver::date_time::current() {
   FILETIME file_time{};
   GetSystemTimeAsFileTime(&file_time);
-  return date_time{file_time_to_timestamp(file_time), time_zone::current()};
+  return date_time{file_time_to_timestamp(file_time)};
 }
 
 date_time::value_type receiver::date_time::timestamp(bool consider_zone) const {
