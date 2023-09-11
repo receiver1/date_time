@@ -84,16 +84,20 @@ date_time& date_time::operator=(value_type timestamp) {
 std::string receiver::date_time::format(date_format standard,
                                         bool consider_zone) {
   std::string result{};
-  const auto file_time = timestamp_to_file_time(timestamp(consider_zone));
-  SYSTEMTIME system_time{};
+  const auto file_time = timestamp_to_file_time(timestamp(true));
+  const auto file_offset = timestamp_to_file_time(zone_.offset());
+  SYSTEMTIME system_time{}, system_offset{};
 
   FileTimeToSystemTime(&file_time, &system_time);
+  FileTimeToSystemTime(&file_offset, &system_offset);
 
   if (standard == date_format::ISO_8601) {
-    result.resize(21);
-    sprintf_s(&result[0], result.size(), "%04u-%02u-%02uT%02u:%02u:%02uZ",
-              system_time.wYear, system_time.wMonth, system_time.wDay,
-              system_time.wHour, system_time.wMinute, system_time.wSecond);
+    result.resize(21 + 5);
+    sprintf_s(&result[0], result.size(),
+              "%04u-%02u-%02uT%02u:%02u:%02u+%02u:%02u", system_time.wYear,
+              system_time.wMonth, system_time.wDay, system_time.wHour,
+              system_time.wMinute, system_time.wSecond, system_offset.wHour,
+              system_offset.wMinute);
   }
 
   return result;
