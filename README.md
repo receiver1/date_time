@@ -1,5 +1,5 @@
 # receiver::date_time
-Class for working with date and time according to the Internet standard. The class is designed to work with Windows and works with its API.
+Class for working with date and time according to the Internet standard. The class is designed to work with Windows and works with its API. The class does not work with millisecond zone offsets.
 
 ## Demonstration:
 A very short example of all the functionality: parsing and formatting according to the ISO_8601 standard, as well as indicating the starting time zone
