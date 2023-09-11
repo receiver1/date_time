@@ -56,6 +56,16 @@ date_time& date_time::set_time_zone(const time_zone& timezone) {
   return *this;
 }
 
+date_time& receiver::date_time::operator+(std::chrono::seconds seconds) {
+  this->native_ += seconds.count();
+  return *this;
+}
+
+date_time& receiver::date_time::operator-(std::chrono::seconds seconds) {
+  this->native_ -= seconds.count();
+  return *this;
+}
+
 date_time& date_time::operator+=(std::chrono::seconds seconds) {
   this->native_ += seconds.count();
   return *this;
