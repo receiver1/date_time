@@ -93,7 +93,7 @@ class date_time {
                      bool consider_zone = true);
 
   /**
-   * Returns initialized class with current time
+   * Returns an initialized class with the current UTC time
    * @return date_time
    */
   static date_time current();
