@@ -33,4 +33,6 @@ std::cout << date_time::current()
 ```
 
 All functions are documented in the code, you can figure it out yourself by looking at the .h file.
-If you find a problem or want to see a new feature, you can create an issue.
+
+## Problem?
+If you encounter a problem or have ideas for improving the code/functionality of the class, then I will be glad to see your issue!
