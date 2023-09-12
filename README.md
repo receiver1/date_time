@@ -10,6 +10,7 @@ A very short example of all the functionality: parsing and formatting according 
 ```cpp
 std::cout << date_time{"2023-09-07T00:00:00Z", date_format::ISO_8601,
                     time_zone{"Russia TZ 2 Standard Time"}}.format(date_format::ISO_8601) << std::endl;
+// Output: 2023-09-07T00:00:00+03:00
 ```
 You can add/sub seconds/minutes/hours/days via std::chrono:
 ```cpp
@@ -17,6 +18,15 @@ using namespace std::chrono_literals;
 std::cout << (date_time{"2023-09-07T00:00:00Z"} + 15min)
                  .format(date_format::ISO_8601)
           << std::endl;
+// Output: 2023-09-07T00:15:00+00:00
+```
+Get the current time in the current time zone:
+```cpp
+std::cout << date_time::current()
+                 .set_time_zone(time_zone::current())
+                 .format(date_format::ISO_8601)
+          << std::endl;
+// Output: 2023-09-12T12:01:17+04:00
 ```
 
 All functions are documented in the code, you can figure it out yourself by looking at the .h file.
