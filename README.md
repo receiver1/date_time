@@ -1,4 +1,5 @@
 # receiver::date_time
+## What?
 Class for working with date and time according to the Internet standard. The class is designed to work with Windows and works with its API. You can find them all in this path: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Time Zones`. The class does not work with millisecond zone offsets. The `date_time::current` method takes UTC time without a time zone, you can set the zone yourself using `date_time::set_timezone`.
 
 ## Why?
