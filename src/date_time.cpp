@@ -55,25 +55,40 @@ date_time& date_time::set_time_zone(const time_zone& timezone) {
   this->zone_ = timezone;
   return *this;
 }
-
-date_time& receiver::date_time::operator+(std::chrono::seconds seconds) {
-  this->native_ += seconds.count();
+date_time& receiver::date_time::operator+=(value_type seconds) {
+  this->native_ += seconds;
   return *this;
 }
 
-date_time& receiver::date_time::operator-(std::chrono::seconds seconds) {
-  this->native_ -= seconds.count();
+date_time& receiver::date_time::operator-=(value_type seconds) {
+  this->native_ -= seconds;
   return *this;
 }
 
-date_time& date_time::operator+=(std::chrono::seconds seconds) {
-  this->native_ += seconds.count();
-  return *this;
+date_time& date_time::operator+=(const std::chrono::seconds& seconds) {
+  return (*this += seconds.count());
 }
 
-date_time& date_time::operator-=(std::chrono::seconds seconds) {
-  this->native_ -= seconds.count();
-  return *this;
+date_time& date_time::operator-=(const std::chrono::seconds& seconds) {
+  return (*this -= seconds.count());
+}
+
+const date_time receiver::date_time::operator+(value_type seconds) const {
+  return date_time{*this} += seconds;
+}
+
+const date_time receiver::date_time::operator-(value_type seconds) const {
+  return date_time{*this} -= seconds;
+}
+
+const date_time receiver::date_time::operator+(
+    const std::chrono::seconds& seconds) const {
+  return date_time{*this} += seconds;
+}
+
+const date_time receiver::date_time::operator-(
+    const std::chrono::seconds& seconds) const {
+  return date_time{*this} -= seconds;
 }
 
 date_time& date_time::operator=(value_type timestamp) {
